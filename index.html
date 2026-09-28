@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Starloom — Reviews from people who already bought</title>
+<meta name="description" content="Read and write honest reviews of businesses. Every rating on Starloom comes from a verified customer.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Starloom — Reviews from people who already bought">
+<meta property="og:description" content="Read and write honest reviews of businesses. Every rating comes from a verified customer.">
+<meta name="theme-color" content="#05061A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<canvas id="gl" aria-hidden="true"></canvas>
+
+<header class="nav">
+  <a class="logo" href="#top" aria-label="Starloom home">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#FFC53D" d="M12 1.8l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17l-6.2 3.7 1.6-7L2 9l7.1-.6z"/></svg>
+    Starloom
+  </a>
+  <div class="nav-r">
+    <a class="pill hide-s" href="#categories">Categories</a>
+    <a class="pill hide-s" href="#business">For businesses</a>
+    <a class="pill" href="#login">Log in</a>
+    <a class="pill solid" href="#write">Write a review</a>
+  </div>
+</header>
+<div class="rail" aria-hidden="true"><i id="railDot"></i></div>
+
+<main id="main">
+  <section class="hero" id="top" data-z="0">
+    <div class="wrap">
+      <h1>Ask the people who already bought.</h1>
+      <div class="hero-row">
+        <p class="lede">Starloom collects reviews from verified customers only. Look up any business before you pay, or tell others how it went.</p>
+        <form class="search-box" id="searchForm" role="search" novalidate>
+          <label for="q" class="sr" style="position:absolute;left:-9999px">Search businesses</label>
+          <div class="search">
+            <input id="q" type="search" placeholder="Search a company or category" autocomplete="off">
+            <button type="submit">Search</button>
+          </div>
+          <div class="chips" aria-label="Popular searches">
+            <button class="chip" type="button">Couriers</button>
+            <button class="chip" type="button">Mobile networks</button>
+            <button class="chip" type="button">Online stores</button>
+            <button class="chip" type="button">Dentists</button>
+          </div>
+          <p class="search-msg" id="searchMsg" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="statement" data-z="-38">
+    <p class="big-words" id="bigWords">Every star here was earned by a real customer with a real receipt</p>
+  </section>
+
+  <section class="reviews" data-z="-110">
+    <div class="wrap">
+      <h2 class="sec-h">Written this week</h2>
+      <p class="sec-sub">A few of the 48,000 reviews posted in the last seven days. Every one is tied to an order, booking or invoice.</p>
+      <div class="rv-grid" id="rvGrid"></div>
+    </div>
+  </section>
+
+  <section class="cats" id="categories" data-z="-215">
+    <div class="wrap">
+      <h2 class="sec-h">Browse by what you need</h2>
+      <p class="sec-sub">Pick a category to see the best rated businesses near you.</p>
+      <div class="cat-grid" id="catGrid"></div>
+    </div>
+  </section>
+
+  <section class="score" data-z="-262">
+    <div class="wrap score-grid">
+      <div>
+        <h2 class="sec-h">How a trust score is made</h2>
+        <ol class="steps">
+          <li><b>1</b><div><h3>A customer buys</h3><p>The business sends a review invite after a real order, or the customer uploads proof.</p></div></li>
+          <li><b>2</b><div><h3>We check it</h3><p>Duplicates, paid reviews and accounts with no purchase are filtered out before anything is published.</p></div></li>
+          <li><b>3</b><div><h3>The score updates</h3><p>Recent reviews count more than old ones, so a score shows how a business is doing today.</p></div></li>
+        </ol>
+      </div>
+      <div class="meter" id="meter">
+        <div class="meter-num">4.6 <small>out of 5</small></div>
+        <div class="stars" id="meterStars" style="margin-top:12px"></div>
+        <p style="color:var(--dim);font-size:14px;margin-top:10px">Example: Northwind Couriers, 12,408 reviews</p>
+        <div class="bars">
+          <div class="bar"><span>5 stars</span><div><i data-w="74"></i></div><span>74%</span></div>
+          <div class="bar"><span>4 stars</span><div><i data-w="15"></i></div><span>15%</span></div>
+          <div class="bar"><span>3 stars</span><div><i data-w="5"></i></div><span>5%</span></div>
+          <div class="bar"><span>2 stars</span><div><i data-w="2"></i></div><span>2%</span></div>
+          <div class="bar"><span>1 star</span><div><i data-w="4"></i></div><span>4%</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="biz" id="business" data-z="-318">
+    <div class="wrap">
+      <h2 class="sec-h">Your customers are already talking</h2>
+      <p class="sec-sub">Claim your free business page, reply to reviews, and show your score on your own site.</p>
+      <div class="nums">
+        <div class="num"><strong>2.1M</strong><span>verified reviews</span></div>
+        <div class="num"><strong>86,000</strong><span>businesses listed</span></div>
+        <div class="num"><strong>94%</strong><span>of reviews get a reply within 48 hours</span></div>
+      </div>
+      <a class="pill solid" href="#signup" data-reason="business">Claim your business page</a>
+    </div>
+  </section>
+
+  <section class="cta" id="write" data-z="-392">
+    <div class="wrap">
+      <h2>Had a good day?<br>A bad one?</h2>
+      <p>Your review takes two minutes and helps the next person decide.</p>
+      <a class="pill solid" href="#signup" data-reason="review">Write a review</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot">
+    <span>© 2026 Starloom</span>
+    <nav aria-label="Footer">
+      <a href="#top">About</a><a href="#business">For businesses</a><a href="#top">Guidelines</a><a href="#top">Privacy</a><a href="#top">Terms</a>
+    </nav>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status"></div>
+<div class="auth" id="auth" role="dialog" aria-modal="true" aria-labelledby="authTitle" aria-hidden="true">
+  <div class="auth-panel">
+    <a class="logo auth-logo" href="#top" id="authLogo" aria-label="Starloom home"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#FFC53D" d="M12 1.8l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17l-6.2 3.7 1.6-7L2 9l7.1-.6z"/></svg>Starloom</a>
+    <button class="auth-close" type="button" id="authClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div id="authView"></div>
+  </div>
+  <div class="auth-side" aria-hidden="true">
+    <div class="quote">
+      <span class="stars" id="qStars"></span>
+      <p>I checked Starloom before booking a mover. The 2-star reviews warned me about hidden fees, and they were right.</p>
+      <small>Hina M., reviewer since 2024</small>
+    </div>
+  </div>
+</div>
+
+
+<script src="assets/app.js"></script>
+</body>
+</html>
